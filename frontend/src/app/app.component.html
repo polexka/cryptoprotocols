@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Шифрование и Подпись с использованием RSA и AES</h1>
+
+  <div>
+    <label for="message">Введите сообщение:</label>
+    <textarea
+      id="message"
+      [(ngModel)]="message"
+      rows="4"
+      cols="50"
+      placeholder="Введите текст"
+      [disabled]="loading"
+    ></textarea>
+  </div>
+
+  <div>
+    <button (click)="send()" [disabled]="loading">
+      Отправить зашифрованное сообщение
+    </button>
+  </div>
+
+  <div>
+    <h2>Ответ от сервера:</h2>
+    <pre>
+@if (loading) {@for (log of loadingLog; track log) { {{
+        log + "\n"
+      }} } } @else if (!!response) { {{ response | json }} } 
+    @else {Отправьте сообщение}
+    </pre>
+  </div>
+</div>
+
+<!-- Стилевые классы для базового оформления -->
+<style>
+  .container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  textarea {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    text-align: left;
+  }
+</style>
