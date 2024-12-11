@@ -4,8 +4,14 @@ import { generateRSAKeys, decryptAES, verifySignature } from "./crypto-utils";
 import crypto from "crypto";
 
 const app = express();
+const cors = require('cors');
+
 app.use(bodyParser.json());
 
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST'],
+}))
 // RSA-ключи сервера
 const serverKeys = generateRSAKeys();
 
